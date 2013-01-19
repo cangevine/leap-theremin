@@ -69,7 +69,8 @@ $(function() {
 		oscillator = context.createOscillator()
 		oscillator.connect(context.destination);
 		oscillator.frequency.value = 900;
-		oscillator.start(0);
+		//oscillator.start(0);
+		oscillator.noteOn && oscillator.noteOn(0);
 
 		$(this).addClass('active');
 		$('#stop').removeClass('active');
@@ -77,7 +78,7 @@ $(function() {
     });
 
     $('#stop').click(function() {
-    	oscillator.stop(0);
+    	oscillator.disconnect();
 		state = 0;
 	
 		$(this).addClass('active');
